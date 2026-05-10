@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Smart Expert</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        select, textarea, button {
+            font-family: inherit;
+            font-size: 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        select {
+            background-color: var(--card-bg);
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            resize: vertical;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #1d4ed8;
+        }
+        #result-area {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            display: none;
+            line-height: 1.6;
+        }
+        .ipa {
+            color: #d97706;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>IELTS Smart Expert</h1>
+    <div class="subtitle">Từ điển thông minh & Trợ lý nâng cấp ngôn ngữ</div>
+
+    <div class="controls">
+        <select id="bandAim">
+            <option value="6.0-6.5">Target Aim: 6.0 - 6.5</option>
+            <option value="7.0-7.5">Target Aim: 7.0 - 7.5</option>
+            <option value="8.0-8.5">Target Aim: 8.0 - 8.5</option>
+            <option value="9.0">Target Aim: 9.0</option>
+        </select>
+    </div>
+
+    <textarea id="userInput" placeholder="Nhập từ, cụm từ, câu tiếng Anh hoặc tiếng Việt vào đây..."></textarea>
+    
+    <button onclick="processInput()">Phân tích & Nâng cấp</button>
+
+    <div id="result-area">
+        <!-- Kết quả từ AI sẽ hiển thị ở đây -->
+    </div>
+</div>
+
+<script>
+    async function processInput() {
+        const input = document.getElementById('userInput').value.trim();
+        const aim = document.getElementById('bandAim').value;
+        const resultArea = document.getElementById('result-area');
+
+        if (!input) {
+            alert('Vui lòng nhập nội dung cần tra cứu!');
+            return;
+        }
+
+        resultArea.style.display = 'block';
+        resultArea.innerHTML = '<em>Đang xử lý dữ liệu...</em>';
+
+        // Tại đây, bạn sẽ gọi API của AI (ví dụ Fetch tới backend chứa Gemini/OpenAI)
+        // Dưới đây là code mô phỏng kết quả trả về:
+        
+        setTimeout(() => {
+            resultArea.innerHTML = `
+                <h3>Kết quả phân tích cho mục tiêu ${aim}</h3>
+                <p><em>(Đây là giao diện mẫu. Để trải nghiệm tính năng thật, hãy chat trực tiếp với AI phía dưới!)</em></p>
+            `;
+        }, 800);
+    }
+</script>
+
+</body>
+</html>
